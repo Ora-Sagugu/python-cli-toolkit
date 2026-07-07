@@ -58,7 +58,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/<你的用户名>/python-15-day-learning.git
+git clone https://github.com/Ora-Sagugu/python-15-day-learning.git
 cd python-15-day-learning
 python projects/project01_guess_number.py
 ```
