@@ -1,85 +1,70 @@
-# python-15-day-learning
+# Python CLI Toolkit
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Progress](https://img.shields.io/badge/Progress-Day%2011%2F15-yellow)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Stdlib](https://img.shields.io/badge/Dependencies-stdlib%20only-green)
+![Apps](https://img.shields.io/badge/CLI%20Apps-4-orange)
 
-用 15 天系统学习 Python 基础语法，每天交付 1 个可运行脚本，最终完成 4 个命令行小项目。
+一组 **Python 标准库命令行小工具**，零第三方依赖，可直接运行演示。
 
-*A structured 15-day Python fundamentals journey with daily exercises and 4 CLI mini-projects.*
-
----
-
-## 学习进度
-
-| Day | 日期 | 主题 | 文件 | 状态 |
-|-----|------|------|------|------|
-| 1 | 06-23 | print / input | `exercises/day01_self_intro.py` | 已完成 |
-| 2 | 06-24 | 变量 / 数字 | `exercises/day02_calculator.py` | 已完成 |
-| 3 | 06-25 | 字符串 | `exercises/day03_text_tool.py` | 已完成 |
-| 4 | 06-26 | if 判断 | `exercises/day04_score_level.py` | 已完成 |
-| 5 | 06-27 | while 循环 | `exercises/day05_password_loop.py` | 已完成 |
-| 6 | 06-28 | for 循环 / range | `exercises/day06_number_report.py` | 已完成 |
-| 7 | 06-29 | list 列表 | `exercises/day07_name_list.py` | 已完成 |
-| 8 | 06-30 | dict 字典 | `exercises/day08_contact_card.py` | 已完成 |
-| 9 | 07-01 | function 函数 | `exercises/day09_tools.py` | 已完成 |
-| 10 | 07-02 | 综合练习 | `exercises/day10_menu_practice.py` | 已完成 |
-| 11 | 07-03 | 项目 1：猜数字 | `projects/project01_guess_number.py` | 已完成 |
-| 12 | 07-04 | 项目 2：Todo | `projects/project02_todo.py` | 待完成 |
-| 13 | 07-05 | 项目 3：购物清单 | `projects/project03_shopping_list.py` | 待完成 |
-| 14 | 07-06 | 项目 4：简单记账 | `projects/project04_accounting.py` | 待完成 |
-| 15 | 07-07 | 整理 / 复盘 / 修项目 | — | 待完成 |
+*A collection of stdlib-only CLI mini-apps for Python practice.*
 
 ---
 
-## 项目亮点
+## 工具一览
 
-### 项目 1：猜数字
-
-程序随机生成 1–100 的整数，用户循环猜测，提示「大了 / 小了」，猜对后输出尝试次数。
-
-- **技术点**：`random.randint`、`while` 循环、`if / elif / else`
-- **运行**：`python projects/project01_guess_number.py`
-
-### 项目 2：Todo（待完成）
-
-命令菜单：添加任务、查看任务、完成任务、删除任务、退出。
-
-### 项目 3：购物清单（待完成）
-
-添加商品名称、单价、数量；查看清单；计算总价。
-
-### 项目 4：简单记账（待完成）
-
-添加收入/支出记录，查看全部记录，统计总收入、总支出、余额。
+| 工具 | 功能 | 技术点 |
+|------|------|--------|
+| Guess Number | 猜数字，最多 7 次机会 | `random`, `while`, 输入校验 |
+| Todo List | 任务增删改查 + 完成状态筛选 | `list` of `dict`, `enumerate` |
+| Shopping List | 商品管理 + 自动计价 + 删除 | 聚合计算, `float` 格式化 |
+| Accounting | 收入/支出记录 + 分类筛选 + 汇总 | 条件过滤, 遍历统计 |
 
 ---
 
 ## 快速开始
 
 ```bash
-git clone https://github.com/Ora-Sagugu/python-15-day-learning.git
-cd python-15-day-learning
-python projects/project01_guess_number.py
+git clone https://github.com/Ora-Sagugu/python-cli-toolkit.git
+cd python-cli-toolkit
+python main.py
 ```
 
-**环境要求**：Python 3.8+，无第三方依赖（纯标准库）。
+也可以单独运行某个工具：
+
+```bash
+python apps/todo.py
+python apps/accounting.py
+```
+
+**环境要求**：Python 3.8+，无需安装任何第三方包。
 
 ---
 
-## 学习方法
+## 项目结构
 
-每天固定节奏：
-
-- **20 分钟学**：只学当天主题，不扩展
-- **50 分钟敲**：必须自己输入代码
-- **20 分钟改**：故意改错、修错、加一个小功能
-
-完整学习计划见 [python_15_day_plan.md](python_15_day_plan.md)。
+```
+python-cli-toolkit/
+├── main.py              # 统一启动器
+├── apps/
+│   ├── guess_number.py
+│   ├── todo.py
+│   ├── shopping_list.py
+│   └── accounting.py
+├── archive/             # 早期练习归档（备查）
+└── docs/
+    └── INTERVIEW.md     # 面试问答备忘
+```
 
 ---
 
-## 后续计划
+## 设计说明
 
-- Day 12–14：完成 Todo、购物清单、记账三个项目
-- Day 15：四个项目各加 1 个改进，README 定稿
+- **数据建模**：用 `list` 存一组 `dict`，每个 dict 表示一条业务记录（任务、商品、账目）
+- **纯标准库**：降低环境成本，聚焦 Python 语法和 CLI 交互模式
+- **可扩展方向**：JSON 文件持久化、`dataclass` 替代 dict、单元测试、Web 化（Flask/FastAPI）
+
+---
+
+## License
+
+MIT
