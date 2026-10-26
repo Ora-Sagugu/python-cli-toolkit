@@ -52,7 +52,7 @@ python-cli-toolkit/
 │   └── accounting.py
 ├── archive/             # 早期练习归档（备查）
 └── docs/
-    └── INTERVIEW.md     # 面试问答备忘
+    └── INTERVIEW.md     
 ```
 
 ---
